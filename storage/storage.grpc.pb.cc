@@ -31,6 +31,7 @@ static const char* StorageService_method_names[] = {
   "/grpc_services.storage.StorageService/UpdateItem",
   "/grpc_services.storage.StorageService/RemoveDrive",
   "/grpc_services.storage.StorageService/RemoveItem",
+  "/grpc_services.storage.StorageService/WatchChanges",
 };
 
 std::unique_ptr< StorageService::Stub> StorageService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -54,6 +55,7 @@ StorageService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& cha
   , rpcmethod_UpdateItem_(StorageService_method_names[11], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_RemoveDrive_(StorageService_method_names[12], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_RemoveItem_(StorageService_method_names[13], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_WatchChanges_(StorageService_method_names[14], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   {}
 
 ::grpc::Status StorageService::Stub::GetDrive(::grpc::ClientContext* context, const ::grpc_services::storage::GetDriveRequest& request, ::grpc_services::storage::GetDriveResponse* response) {
@@ -224,6 +226,18 @@ StorageService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& cha
   return ::grpc::internal::ClientAsyncResponseReaderFactory< ::grpc_services::storage::RemoveItemResponse>::Create(channel_.get(), cq, rpcmethod_RemoveItem_, context, request, false);
 }
 
+::grpc::ClientReader< ::grpc_services::storage::WatchChangesResponse>* StorageService::Stub::WatchChangesRaw(::grpc::ClientContext* context, const ::grpc_services::storage::WatchChangesRequest& request) {
+  return ::grpc::internal::ClientReaderFactory< ::grpc_services::storage::WatchChangesResponse>::Create(channel_.get(), rpcmethod_WatchChanges_, context, request);
+}
+
+::grpc::ClientAsyncReader< ::grpc_services::storage::WatchChangesResponse>* StorageService::Stub::AsyncWatchChangesRaw(::grpc::ClientContext* context, const ::grpc_services::storage::WatchChangesRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::grpc_services::storage::WatchChangesResponse>::Create(channel_.get(), cq, rpcmethod_WatchChanges_, context, request, true, tag);
+}
+
+::grpc::ClientAsyncReader< ::grpc_services::storage::WatchChangesResponse>* StorageService::Stub::PrepareAsyncWatchChangesRaw(::grpc::ClientContext* context, const ::grpc_services::storage::WatchChangesRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::grpc_services::storage::WatchChangesResponse>::Create(channel_.get(), cq, rpcmethod_WatchChanges_, context, request, false, nullptr);
+}
+
 StorageService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       StorageService_method_names[0],
@@ -295,6 +309,11 @@ StorageService::Service::Service() {
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< StorageService::Service, ::grpc_services::storage::RemoveItemRequest, ::grpc_services::storage::RemoveItemResponse>(
           std::mem_fn(&StorageService::Service::RemoveItem), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      StorageService_method_names[14],
+      ::grpc::internal::RpcMethod::SERVER_STREAMING,
+      new ::grpc::internal::ServerStreamingHandler< StorageService::Service, ::grpc_services::storage::WatchChangesRequest, ::grpc_services::storage::WatchChangesResponse>(
+          std::mem_fn(&StorageService::Service::WatchChanges), this)));
 }
 
 StorageService::Service::~Service() {
@@ -395,6 +414,13 @@ StorageService::Service::~Service() {
   (void) context;
   (void) request;
   (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status StorageService::Service::WatchChanges(::grpc::ServerContext* context, const ::grpc_services::storage::WatchChangesRequest* request, ::grpc::ServerWriter< ::grpc_services::storage::WatchChangesResponse>* writer) {
+  (void) context;
+  (void) request;
+  (void) writer;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 

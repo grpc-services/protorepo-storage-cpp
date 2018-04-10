@@ -37,7 +37,7 @@ namespace protobuf_storage_2fstorage_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[28];
+  static const ::google::protobuf::internal::ParseTable schema[30];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -99,6 +99,10 @@ void InitDefaultsRemoveItemRequestImpl();
 void InitDefaultsRemoveItemRequest();
 void InitDefaultsRemoveItemResponseImpl();
 void InitDefaultsRemoveItemResponse();
+void InitDefaultsWatchChangesRequestImpl();
+void InitDefaultsWatchChangesRequest();
+void InitDefaultsWatchChangesResponseImpl();
+void InitDefaultsWatchChangesResponse();
 inline void InitDefaults() {
   InitDefaultsGetDriveRequest();
   InitDefaultsGetDriveResponse();
@@ -128,6 +132,8 @@ inline void InitDefaults() {
   InitDefaultsRemoveDriveResponse();
   InitDefaultsRemoveItemRequest();
   InitDefaultsRemoveItemResponse();
+  InitDefaultsWatchChangesRequest();
+  InitDefaultsWatchChangesResponse();
 }
 }  // namespace protobuf_storage_2fstorage_2eproto
 namespace grpc_services {
@@ -216,6 +222,12 @@ extern UpdateItemRequestDefaultTypeInternal _UpdateItemRequest_default_instance_
 class UpdateItemResponse;
 class UpdateItemResponseDefaultTypeInternal;
 extern UpdateItemResponseDefaultTypeInternal _UpdateItemResponse_default_instance_;
+class WatchChangesRequest;
+class WatchChangesRequestDefaultTypeInternal;
+extern WatchChangesRequestDefaultTypeInternal _WatchChangesRequest_default_instance_;
+class WatchChangesResponse;
+class WatchChangesResponseDefaultTypeInternal;
+extern WatchChangesResponseDefaultTypeInternal _WatchChangesResponse_default_instance_;
 }  // namespace storage
 }  // namespace grpc_services
 namespace grpc_services {
@@ -3410,6 +3422,255 @@ class RemoveItemResponse : public ::google::protobuf::Message /* @@protoc_insert
   friend struct ::protobuf_storage_2fstorage_2eproto::TableStruct;
   friend void ::protobuf_storage_2fstorage_2eproto::InitDefaultsRemoveItemResponseImpl();
 };
+// -------------------------------------------------------------------
+
+class WatchChangesRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:grpc_services.storage.WatchChangesRequest) */ {
+ public:
+  WatchChangesRequest();
+  virtual ~WatchChangesRequest();
+
+  WatchChangesRequest(const WatchChangesRequest& from);
+
+  inline WatchChangesRequest& operator=(const WatchChangesRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  WatchChangesRequest(WatchChangesRequest&& from) noexcept
+    : WatchChangesRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline WatchChangesRequest& operator=(WatchChangesRequest&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WatchChangesRequest& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const WatchChangesRequest* internal_default_instance() {
+    return reinterpret_cast<const WatchChangesRequest*>(
+               &_WatchChangesRequest_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    28;
+
+  void Swap(WatchChangesRequest* other);
+  friend void swap(WatchChangesRequest& a, WatchChangesRequest& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline WatchChangesRequest* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  WatchChangesRequest* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const WatchChangesRequest& from);
+  void MergeFrom(const WatchChangesRequest& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(WatchChangesRequest* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string drive_id = 1;
+  void clear_drive_id();
+  static const int kDriveIdFieldNumber = 1;
+  const ::std::string& drive_id() const;
+  void set_drive_id(const ::std::string& value);
+  #if LANG_CXX11
+  void set_drive_id(::std::string&& value);
+  #endif
+  void set_drive_id(const char* value);
+  void set_drive_id(const char* value, size_t size);
+  ::std::string* mutable_drive_id();
+  ::std::string* release_drive_id();
+  void set_allocated_drive_id(::std::string* drive_id);
+
+  // @@protoc_insertion_point(class_scope:grpc_services.storage.WatchChangesRequest)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr drive_id_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_storage_2fstorage_2eproto::TableStruct;
+  friend void ::protobuf_storage_2fstorage_2eproto::InitDefaultsWatchChangesRequestImpl();
+};
+// -------------------------------------------------------------------
+
+class WatchChangesResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:grpc_services.storage.WatchChangesResponse) */ {
+ public:
+  WatchChangesResponse();
+  virtual ~WatchChangesResponse();
+
+  WatchChangesResponse(const WatchChangesResponse& from);
+
+  inline WatchChangesResponse& operator=(const WatchChangesResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  WatchChangesResponse(WatchChangesResponse&& from) noexcept
+    : WatchChangesResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline WatchChangesResponse& operator=(WatchChangesResponse&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WatchChangesResponse& default_instance();
+
+  enum TestEventCase {
+    kCreated = 1,
+    kRemoved = 2,
+    kUpdated = 3,
+    TEST_EVENT_NOT_SET = 0,
+  };
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const WatchChangesResponse* internal_default_instance() {
+    return reinterpret_cast<const WatchChangesResponse*>(
+               &_WatchChangesResponse_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    29;
+
+  void Swap(WatchChangesResponse* other);
+  friend void swap(WatchChangesResponse& a, WatchChangesResponse& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline WatchChangesResponse* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  WatchChangesResponse* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const WatchChangesResponse& from);
+  void MergeFrom(const WatchChangesResponse& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(WatchChangesResponse* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // .grpc_services.storage.ItemCreatedEvent created = 1;
+  bool has_created() const;
+  void clear_created();
+  static const int kCreatedFieldNumber = 1;
+  const ::grpc_services::storage::ItemCreatedEvent& created() const;
+  ::grpc_services::storage::ItemCreatedEvent* release_created();
+  ::grpc_services::storage::ItemCreatedEvent* mutable_created();
+  void set_allocated_created(::grpc_services::storage::ItemCreatedEvent* created);
+
+  // .grpc_services.storage.ItemRemovedEvent removed = 2;
+  bool has_removed() const;
+  void clear_removed();
+  static const int kRemovedFieldNumber = 2;
+  const ::grpc_services::storage::ItemRemovedEvent& removed() const;
+  ::grpc_services::storage::ItemRemovedEvent* release_removed();
+  ::grpc_services::storage::ItemRemovedEvent* mutable_removed();
+  void set_allocated_removed(::grpc_services::storage::ItemRemovedEvent* removed);
+
+  // .grpc_services.storage.ItemContentUpdatedEvent updated = 3;
+  bool has_updated() const;
+  void clear_updated();
+  static const int kUpdatedFieldNumber = 3;
+  const ::grpc_services::storage::ItemContentUpdatedEvent& updated() const;
+  ::grpc_services::storage::ItemContentUpdatedEvent* release_updated();
+  ::grpc_services::storage::ItemContentUpdatedEvent* mutable_updated();
+  void set_allocated_updated(::grpc_services::storage::ItemContentUpdatedEvent* updated);
+
+  TestEventCase test_event_case() const;
+  // @@protoc_insertion_point(class_scope:grpc_services.storage.WatchChangesResponse)
+ private:
+  void set_has_created();
+  void set_has_removed();
+  void set_has_updated();
+
+  inline bool has_test_event() const;
+  void clear_test_event();
+  inline void clear_has_test_event();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  union TestEventUnion {
+    TestEventUnion() {}
+    ::grpc_services::storage::ItemCreatedEvent* created_;
+    ::grpc_services::storage::ItemRemovedEvent* removed_;
+    ::grpc_services::storage::ItemContentUpdatedEvent* updated_;
+  } test_event_;
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _oneof_case_[1];
+
+  friend struct ::protobuf_storage_2fstorage_2eproto::TableStruct;
+  friend void ::protobuf_storage_2fstorage_2eproto::InitDefaultsWatchChangesResponseImpl();
+};
 // ===================================================================
 
 
@@ -5572,9 +5833,185 @@ inline void RemoveItemRequest::set_allocated_item_id(::std::string* item_id) {
 
 // RemoveItemResponse
 
+// -------------------------------------------------------------------
+
+// WatchChangesRequest
+
+// string drive_id = 1;
+inline void WatchChangesRequest::clear_drive_id() {
+  drive_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& WatchChangesRequest::drive_id() const {
+  // @@protoc_insertion_point(field_get:grpc_services.storage.WatchChangesRequest.drive_id)
+  return drive_id_.GetNoArena();
+}
+inline void WatchChangesRequest::set_drive_id(const ::std::string& value) {
+  
+  drive_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:grpc_services.storage.WatchChangesRequest.drive_id)
+}
+#if LANG_CXX11
+inline void WatchChangesRequest::set_drive_id(::std::string&& value) {
+  
+  drive_id_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:grpc_services.storage.WatchChangesRequest.drive_id)
+}
+#endif
+inline void WatchChangesRequest::set_drive_id(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  drive_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:grpc_services.storage.WatchChangesRequest.drive_id)
+}
+inline void WatchChangesRequest::set_drive_id(const char* value, size_t size) {
+  
+  drive_id_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:grpc_services.storage.WatchChangesRequest.drive_id)
+}
+inline ::std::string* WatchChangesRequest::mutable_drive_id() {
+  
+  // @@protoc_insertion_point(field_mutable:grpc_services.storage.WatchChangesRequest.drive_id)
+  return drive_id_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* WatchChangesRequest::release_drive_id() {
+  // @@protoc_insertion_point(field_release:grpc_services.storage.WatchChangesRequest.drive_id)
+  
+  return drive_id_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void WatchChangesRequest::set_allocated_drive_id(::std::string* drive_id) {
+  if (drive_id != NULL) {
+    
+  } else {
+    
+  }
+  drive_id_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), drive_id);
+  // @@protoc_insertion_point(field_set_allocated:grpc_services.storage.WatchChangesRequest.drive_id)
+}
+
+// -------------------------------------------------------------------
+
+// WatchChangesResponse
+
+// .grpc_services.storage.ItemCreatedEvent created = 1;
+inline bool WatchChangesResponse::has_created() const {
+  return test_event_case() == kCreated;
+}
+inline void WatchChangesResponse::set_has_created() {
+  _oneof_case_[0] = kCreated;
+}
+inline ::grpc_services::storage::ItemCreatedEvent* WatchChangesResponse::release_created() {
+  // @@protoc_insertion_point(field_release:grpc_services.storage.WatchChangesResponse.created)
+  if (has_created()) {
+    clear_has_test_event();
+      ::grpc_services::storage::ItemCreatedEvent* temp = test_event_.created_;
+    test_event_.created_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline const ::grpc_services::storage::ItemCreatedEvent& WatchChangesResponse::created() const {
+  // @@protoc_insertion_point(field_get:grpc_services.storage.WatchChangesResponse.created)
+  return has_created()
+      ? *test_event_.created_
+      : *reinterpret_cast< ::grpc_services::storage::ItemCreatedEvent*>(&::grpc_services::storage::_ItemCreatedEvent_default_instance_);
+}
+inline ::grpc_services::storage::ItemCreatedEvent* WatchChangesResponse::mutable_created() {
+  if (!has_created()) {
+    clear_test_event();
+    set_has_created();
+    test_event_.created_ = new ::grpc_services::storage::ItemCreatedEvent;
+  }
+  // @@protoc_insertion_point(field_mutable:grpc_services.storage.WatchChangesResponse.created)
+  return test_event_.created_;
+}
+
+// .grpc_services.storage.ItemRemovedEvent removed = 2;
+inline bool WatchChangesResponse::has_removed() const {
+  return test_event_case() == kRemoved;
+}
+inline void WatchChangesResponse::set_has_removed() {
+  _oneof_case_[0] = kRemoved;
+}
+inline ::grpc_services::storage::ItemRemovedEvent* WatchChangesResponse::release_removed() {
+  // @@protoc_insertion_point(field_release:grpc_services.storage.WatchChangesResponse.removed)
+  if (has_removed()) {
+    clear_has_test_event();
+      ::grpc_services::storage::ItemRemovedEvent* temp = test_event_.removed_;
+    test_event_.removed_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline const ::grpc_services::storage::ItemRemovedEvent& WatchChangesResponse::removed() const {
+  // @@protoc_insertion_point(field_get:grpc_services.storage.WatchChangesResponse.removed)
+  return has_removed()
+      ? *test_event_.removed_
+      : *reinterpret_cast< ::grpc_services::storage::ItemRemovedEvent*>(&::grpc_services::storage::_ItemRemovedEvent_default_instance_);
+}
+inline ::grpc_services::storage::ItemRemovedEvent* WatchChangesResponse::mutable_removed() {
+  if (!has_removed()) {
+    clear_test_event();
+    set_has_removed();
+    test_event_.removed_ = new ::grpc_services::storage::ItemRemovedEvent;
+  }
+  // @@protoc_insertion_point(field_mutable:grpc_services.storage.WatchChangesResponse.removed)
+  return test_event_.removed_;
+}
+
+// .grpc_services.storage.ItemContentUpdatedEvent updated = 3;
+inline bool WatchChangesResponse::has_updated() const {
+  return test_event_case() == kUpdated;
+}
+inline void WatchChangesResponse::set_has_updated() {
+  _oneof_case_[0] = kUpdated;
+}
+inline ::grpc_services::storage::ItemContentUpdatedEvent* WatchChangesResponse::release_updated() {
+  // @@protoc_insertion_point(field_release:grpc_services.storage.WatchChangesResponse.updated)
+  if (has_updated()) {
+    clear_has_test_event();
+      ::grpc_services::storage::ItemContentUpdatedEvent* temp = test_event_.updated_;
+    test_event_.updated_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline const ::grpc_services::storage::ItemContentUpdatedEvent& WatchChangesResponse::updated() const {
+  // @@protoc_insertion_point(field_get:grpc_services.storage.WatchChangesResponse.updated)
+  return has_updated()
+      ? *test_event_.updated_
+      : *reinterpret_cast< ::grpc_services::storage::ItemContentUpdatedEvent*>(&::grpc_services::storage::_ItemContentUpdatedEvent_default_instance_);
+}
+inline ::grpc_services::storage::ItemContentUpdatedEvent* WatchChangesResponse::mutable_updated() {
+  if (!has_updated()) {
+    clear_test_event();
+    set_has_updated();
+    test_event_.updated_ = new ::grpc_services::storage::ItemContentUpdatedEvent;
+  }
+  // @@protoc_insertion_point(field_mutable:grpc_services.storage.WatchChangesResponse.updated)
+  return test_event_.updated_;
+}
+
+inline bool WatchChangesResponse::has_test_event() const {
+  return test_event_case() != TEST_EVENT_NOT_SET;
+}
+inline void WatchChangesResponse::clear_has_test_event() {
+  _oneof_case_[0] = TEST_EVENT_NOT_SET;
+}
+inline WatchChangesResponse::TestEventCase WatchChangesResponse::test_event_case() const {
+  return WatchChangesResponse::TestEventCase(_oneof_case_[0]);
+}
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

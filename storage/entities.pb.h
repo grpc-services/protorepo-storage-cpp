@@ -37,7 +37,7 @@ namespace protobuf_storage_2fentities_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[6];
+  static const ::google::protobuf::internal::ParseTable schema[9];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -55,6 +55,12 @@ void InitDefaultsDriveImpl();
 void InitDefaultsDrive();
 void InitDefaultsItemImpl();
 void InitDefaultsItem();
+void InitDefaultsItemCreatedEventImpl();
+void InitDefaultsItemCreatedEvent();
+void InitDefaultsItemRemovedEventImpl();
+void InitDefaultsItemRemovedEvent();
+void InitDefaultsItemContentUpdatedEventImpl();
+void InitDefaultsItemContentUpdatedEvent();
 inline void InitDefaults() {
   InitDefaultsHashes();
   InitDefaultsFolderFacet();
@@ -62,6 +68,9 @@ inline void InitDefaults() {
   InitDefaultsAudioFacet();
   InitDefaultsDrive();
   InitDefaultsItem();
+  InitDefaultsItemCreatedEvent();
+  InitDefaultsItemRemovedEvent();
+  InitDefaultsItemContentUpdatedEvent();
 }
 }  // namespace protobuf_storage_2fentities_2eproto
 namespace grpc_services {
@@ -84,6 +93,15 @@ extern HashesDefaultTypeInternal _Hashes_default_instance_;
 class Item;
 class ItemDefaultTypeInternal;
 extern ItemDefaultTypeInternal _Item_default_instance_;
+class ItemContentUpdatedEvent;
+class ItemContentUpdatedEventDefaultTypeInternal;
+extern ItemContentUpdatedEventDefaultTypeInternal _ItemContentUpdatedEvent_default_instance_;
+class ItemCreatedEvent;
+class ItemCreatedEventDefaultTypeInternal;
+extern ItemCreatedEventDefaultTypeInternal _ItemCreatedEvent_default_instance_;
+class ItemRemovedEvent;
+class ItemRemovedEventDefaultTypeInternal;
+extern ItemRemovedEventDefaultTypeInternal _ItemRemovedEvent_default_instance_;
 }  // namespace storage
 }  // namespace grpc_services
 namespace grpc_services {
@@ -963,6 +981,312 @@ class Item : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
 
   friend struct ::protobuf_storage_2fentities_2eproto::TableStruct;
   friend void ::protobuf_storage_2fentities_2eproto::InitDefaultsItemImpl();
+};
+// -------------------------------------------------------------------
+
+class ItemCreatedEvent : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:grpc_services.storage.ItemCreatedEvent) */ {
+ public:
+  ItemCreatedEvent();
+  virtual ~ItemCreatedEvent();
+
+  ItemCreatedEvent(const ItemCreatedEvent& from);
+
+  inline ItemCreatedEvent& operator=(const ItemCreatedEvent& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  ItemCreatedEvent(ItemCreatedEvent&& from) noexcept
+    : ItemCreatedEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline ItemCreatedEvent& operator=(ItemCreatedEvent&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ItemCreatedEvent& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const ItemCreatedEvent* internal_default_instance() {
+    return reinterpret_cast<const ItemCreatedEvent*>(
+               &_ItemCreatedEvent_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    6;
+
+  void Swap(ItemCreatedEvent* other);
+  friend void swap(ItemCreatedEvent& a, ItemCreatedEvent& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ItemCreatedEvent* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  ItemCreatedEvent* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const ItemCreatedEvent& from);
+  void MergeFrom(const ItemCreatedEvent& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(ItemCreatedEvent* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // .grpc_services.storage.Item item = 1;
+  bool has_item() const;
+  void clear_item();
+  static const int kItemFieldNumber = 1;
+  const ::grpc_services::storage::Item& item() const;
+  ::grpc_services::storage::Item* release_item();
+  ::grpc_services::storage::Item* mutable_item();
+  void set_allocated_item(::grpc_services::storage::Item* item);
+
+  // @@protoc_insertion_point(class_scope:grpc_services.storage.ItemCreatedEvent)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::grpc_services::storage::Item* item_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_storage_2fentities_2eproto::TableStruct;
+  friend void ::protobuf_storage_2fentities_2eproto::InitDefaultsItemCreatedEventImpl();
+};
+// -------------------------------------------------------------------
+
+class ItemRemovedEvent : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:grpc_services.storage.ItemRemovedEvent) */ {
+ public:
+  ItemRemovedEvent();
+  virtual ~ItemRemovedEvent();
+
+  ItemRemovedEvent(const ItemRemovedEvent& from);
+
+  inline ItemRemovedEvent& operator=(const ItemRemovedEvent& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  ItemRemovedEvent(ItemRemovedEvent&& from) noexcept
+    : ItemRemovedEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline ItemRemovedEvent& operator=(ItemRemovedEvent&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ItemRemovedEvent& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const ItemRemovedEvent* internal_default_instance() {
+    return reinterpret_cast<const ItemRemovedEvent*>(
+               &_ItemRemovedEvent_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    7;
+
+  void Swap(ItemRemovedEvent* other);
+  friend void swap(ItemRemovedEvent& a, ItemRemovedEvent& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ItemRemovedEvent* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  ItemRemovedEvent* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const ItemRemovedEvent& from);
+  void MergeFrom(const ItemRemovedEvent& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(ItemRemovedEvent* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // .grpc_services.storage.Item item = 1;
+  bool has_item() const;
+  void clear_item();
+  static const int kItemFieldNumber = 1;
+  const ::grpc_services::storage::Item& item() const;
+  ::grpc_services::storage::Item* release_item();
+  ::grpc_services::storage::Item* mutable_item();
+  void set_allocated_item(::grpc_services::storage::Item* item);
+
+  // @@protoc_insertion_point(class_scope:grpc_services.storage.ItemRemovedEvent)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::grpc_services::storage::Item* item_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_storage_2fentities_2eproto::TableStruct;
+  friend void ::protobuf_storage_2fentities_2eproto::InitDefaultsItemRemovedEventImpl();
+};
+// -------------------------------------------------------------------
+
+class ItemContentUpdatedEvent : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:grpc_services.storage.ItemContentUpdatedEvent) */ {
+ public:
+  ItemContentUpdatedEvent();
+  virtual ~ItemContentUpdatedEvent();
+
+  ItemContentUpdatedEvent(const ItemContentUpdatedEvent& from);
+
+  inline ItemContentUpdatedEvent& operator=(const ItemContentUpdatedEvent& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  ItemContentUpdatedEvent(ItemContentUpdatedEvent&& from) noexcept
+    : ItemContentUpdatedEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline ItemContentUpdatedEvent& operator=(ItemContentUpdatedEvent&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ItemContentUpdatedEvent& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const ItemContentUpdatedEvent* internal_default_instance() {
+    return reinterpret_cast<const ItemContentUpdatedEvent*>(
+               &_ItemContentUpdatedEvent_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    8;
+
+  void Swap(ItemContentUpdatedEvent* other);
+  friend void swap(ItemContentUpdatedEvent& a, ItemContentUpdatedEvent& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ItemContentUpdatedEvent* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  ItemContentUpdatedEvent* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const ItemContentUpdatedEvent& from);
+  void MergeFrom(const ItemContentUpdatedEvent& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(ItemContentUpdatedEvent* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // .grpc_services.storage.Item item = 1;
+  bool has_item() const;
+  void clear_item();
+  static const int kItemFieldNumber = 1;
+  const ::grpc_services::storage::Item& item() const;
+  ::grpc_services::storage::Item* release_item();
+  ::grpc_services::storage::Item* mutable_item();
+  void set_allocated_item(::grpc_services::storage::Item* item);
+
+  // @@protoc_insertion_point(class_scope:grpc_services.storage.ItemContentUpdatedEvent)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::grpc_services::storage::Item* item_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_storage_2fentities_2eproto::TableStruct;
+  friend void ::protobuf_storage_2fentities_2eproto::InitDefaultsItemContentUpdatedEventImpl();
 };
 // ===================================================================
 
@@ -2110,9 +2434,177 @@ inline void Item::clear_has_test_type() {
 inline Item::TestTypeCase Item::test_type_case() const {
   return Item::TestTypeCase(_oneof_case_[0]);
 }
+// -------------------------------------------------------------------
+
+// ItemCreatedEvent
+
+// .grpc_services.storage.Item item = 1;
+inline bool ItemCreatedEvent::has_item() const {
+  return this != internal_default_instance() && item_ != NULL;
+}
+inline void ItemCreatedEvent::clear_item() {
+  if (GetArenaNoVirtual() == NULL && item_ != NULL) {
+    delete item_;
+  }
+  item_ = NULL;
+}
+inline const ::grpc_services::storage::Item& ItemCreatedEvent::item() const {
+  const ::grpc_services::storage::Item* p = item_;
+  // @@protoc_insertion_point(field_get:grpc_services.storage.ItemCreatedEvent.item)
+  return p != NULL ? *p : *reinterpret_cast<const ::grpc_services::storage::Item*>(
+      &::grpc_services::storage::_Item_default_instance_);
+}
+inline ::grpc_services::storage::Item* ItemCreatedEvent::release_item() {
+  // @@protoc_insertion_point(field_release:grpc_services.storage.ItemCreatedEvent.item)
+  
+  ::grpc_services::storage::Item* temp = item_;
+  item_ = NULL;
+  return temp;
+}
+inline ::grpc_services::storage::Item* ItemCreatedEvent::mutable_item() {
+  
+  if (item_ == NULL) {
+    item_ = new ::grpc_services::storage::Item;
+  }
+  // @@protoc_insertion_point(field_mutable:grpc_services.storage.ItemCreatedEvent.item)
+  return item_;
+}
+inline void ItemCreatedEvent::set_allocated_item(::grpc_services::storage::Item* item) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete item_;
+  }
+  if (item) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      item = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, item, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  item_ = item;
+  // @@protoc_insertion_point(field_set_allocated:grpc_services.storage.ItemCreatedEvent.item)
+}
+
+// -------------------------------------------------------------------
+
+// ItemRemovedEvent
+
+// .grpc_services.storage.Item item = 1;
+inline bool ItemRemovedEvent::has_item() const {
+  return this != internal_default_instance() && item_ != NULL;
+}
+inline void ItemRemovedEvent::clear_item() {
+  if (GetArenaNoVirtual() == NULL && item_ != NULL) {
+    delete item_;
+  }
+  item_ = NULL;
+}
+inline const ::grpc_services::storage::Item& ItemRemovedEvent::item() const {
+  const ::grpc_services::storage::Item* p = item_;
+  // @@protoc_insertion_point(field_get:grpc_services.storage.ItemRemovedEvent.item)
+  return p != NULL ? *p : *reinterpret_cast<const ::grpc_services::storage::Item*>(
+      &::grpc_services::storage::_Item_default_instance_);
+}
+inline ::grpc_services::storage::Item* ItemRemovedEvent::release_item() {
+  // @@protoc_insertion_point(field_release:grpc_services.storage.ItemRemovedEvent.item)
+  
+  ::grpc_services::storage::Item* temp = item_;
+  item_ = NULL;
+  return temp;
+}
+inline ::grpc_services::storage::Item* ItemRemovedEvent::mutable_item() {
+  
+  if (item_ == NULL) {
+    item_ = new ::grpc_services::storage::Item;
+  }
+  // @@protoc_insertion_point(field_mutable:grpc_services.storage.ItemRemovedEvent.item)
+  return item_;
+}
+inline void ItemRemovedEvent::set_allocated_item(::grpc_services::storage::Item* item) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete item_;
+  }
+  if (item) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      item = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, item, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  item_ = item;
+  // @@protoc_insertion_point(field_set_allocated:grpc_services.storage.ItemRemovedEvent.item)
+}
+
+// -------------------------------------------------------------------
+
+// ItemContentUpdatedEvent
+
+// .grpc_services.storage.Item item = 1;
+inline bool ItemContentUpdatedEvent::has_item() const {
+  return this != internal_default_instance() && item_ != NULL;
+}
+inline void ItemContentUpdatedEvent::clear_item() {
+  if (GetArenaNoVirtual() == NULL && item_ != NULL) {
+    delete item_;
+  }
+  item_ = NULL;
+}
+inline const ::grpc_services::storage::Item& ItemContentUpdatedEvent::item() const {
+  const ::grpc_services::storage::Item* p = item_;
+  // @@protoc_insertion_point(field_get:grpc_services.storage.ItemContentUpdatedEvent.item)
+  return p != NULL ? *p : *reinterpret_cast<const ::grpc_services::storage::Item*>(
+      &::grpc_services::storage::_Item_default_instance_);
+}
+inline ::grpc_services::storage::Item* ItemContentUpdatedEvent::release_item() {
+  // @@protoc_insertion_point(field_release:grpc_services.storage.ItemContentUpdatedEvent.item)
+  
+  ::grpc_services::storage::Item* temp = item_;
+  item_ = NULL;
+  return temp;
+}
+inline ::grpc_services::storage::Item* ItemContentUpdatedEvent::mutable_item() {
+  
+  if (item_ == NULL) {
+    item_ = new ::grpc_services::storage::Item;
+  }
+  // @@protoc_insertion_point(field_mutable:grpc_services.storage.ItemContentUpdatedEvent.item)
+  return item_;
+}
+inline void ItemContentUpdatedEvent::set_allocated_item(::grpc_services::storage::Item* item) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == NULL) {
+    delete item_;
+  }
+  if (item) {
+    ::google::protobuf::Arena* submessage_arena = NULL;
+    if (message_arena != submessage_arena) {
+      item = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, item, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  item_ = item;
+  // @@protoc_insertion_point(field_set_allocated:grpc_services.storage.ItemContentUpdatedEvent.item)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

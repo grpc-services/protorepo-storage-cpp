@@ -136,6 +136,15 @@ class StorageService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::grpc_services::storage::RemoveItemResponse>> PrepareAsyncRemoveItem(::grpc::ClientContext* context, const ::grpc_services::storage::RemoveItemRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::grpc_services::storage::RemoveItemResponse>>(PrepareAsyncRemoveItemRaw(context, request, cq));
     }
+    std::unique_ptr< ::grpc::ClientReaderInterface< ::grpc_services::storage::WatchChangesResponse>> WatchChanges(::grpc::ClientContext* context, const ::grpc_services::storage::WatchChangesRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReaderInterface< ::grpc_services::storage::WatchChangesResponse>>(WatchChangesRaw(context, request));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::grpc_services::storage::WatchChangesResponse>> AsyncWatchChanges(::grpc::ClientContext* context, const ::grpc_services::storage::WatchChangesRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::grpc_services::storage::WatchChangesResponse>>(AsyncWatchChangesRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::grpc_services::storage::WatchChangesResponse>> PrepareAsyncWatchChanges(::grpc::ClientContext* context, const ::grpc_services::storage::WatchChangesRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::grpc_services::storage::WatchChangesResponse>>(PrepareAsyncWatchChangesRaw(context, request, cq));
+    }
   private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::grpc_services::storage::GetDriveResponse>* AsyncGetDriveRaw(::grpc::ClientContext* context, const ::grpc_services::storage::GetDriveRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::grpc_services::storage::GetDriveResponse>* PrepareAsyncGetDriveRaw(::grpc::ClientContext* context, const ::grpc_services::storage::GetDriveRequest& request, ::grpc::CompletionQueue* cq) = 0;
@@ -167,6 +176,9 @@ class StorageService final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::grpc_services::storage::RemoveDriveResponse>* PrepareAsyncRemoveDriveRaw(::grpc::ClientContext* context, const ::grpc_services::storage::RemoveDriveRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::grpc_services::storage::RemoveItemResponse>* AsyncRemoveItemRaw(::grpc::ClientContext* context, const ::grpc_services::storage::RemoveItemRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::grpc_services::storage::RemoveItemResponse>* PrepareAsyncRemoveItemRaw(::grpc::ClientContext* context, const ::grpc_services::storage::RemoveItemRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderInterface< ::grpc_services::storage::WatchChangesResponse>* WatchChangesRaw(::grpc::ClientContext* context, const ::grpc_services::storage::WatchChangesRequest& request) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::grpc_services::storage::WatchChangesResponse>* AsyncWatchChangesRaw(::grpc::ClientContext* context, const ::grpc_services::storage::WatchChangesRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::grpc_services::storage::WatchChangesResponse>* PrepareAsyncWatchChangesRaw(::grpc::ClientContext* context, const ::grpc_services::storage::WatchChangesRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -273,6 +285,15 @@ class StorageService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::grpc_services::storage::RemoveItemResponse>> PrepareAsyncRemoveItem(::grpc::ClientContext* context, const ::grpc_services::storage::RemoveItemRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::grpc_services::storage::RemoveItemResponse>>(PrepareAsyncRemoveItemRaw(context, request, cq));
     }
+    std::unique_ptr< ::grpc::ClientReader< ::grpc_services::storage::WatchChangesResponse>> WatchChanges(::grpc::ClientContext* context, const ::grpc_services::storage::WatchChangesRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReader< ::grpc_services::storage::WatchChangesResponse>>(WatchChangesRaw(context, request));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::grpc_services::storage::WatchChangesResponse>> AsyncWatchChanges(::grpc::ClientContext* context, const ::grpc_services::storage::WatchChangesRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::grpc_services::storage::WatchChangesResponse>>(AsyncWatchChangesRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::grpc_services::storage::WatchChangesResponse>> PrepareAsyncWatchChanges(::grpc::ClientContext* context, const ::grpc_services::storage::WatchChangesRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::grpc_services::storage::WatchChangesResponse>>(PrepareAsyncWatchChangesRaw(context, request, cq));
+    }
 
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
@@ -306,6 +327,9 @@ class StorageService final {
     ::grpc::ClientAsyncResponseReader< ::grpc_services::storage::RemoveDriveResponse>* PrepareAsyncRemoveDriveRaw(::grpc::ClientContext* context, const ::grpc_services::storage::RemoveDriveRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::grpc_services::storage::RemoveItemResponse>* AsyncRemoveItemRaw(::grpc::ClientContext* context, const ::grpc_services::storage::RemoveItemRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::grpc_services::storage::RemoveItemResponse>* PrepareAsyncRemoveItemRaw(::grpc::ClientContext* context, const ::grpc_services::storage::RemoveItemRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientReader< ::grpc_services::storage::WatchChangesResponse>* WatchChangesRaw(::grpc::ClientContext* context, const ::grpc_services::storage::WatchChangesRequest& request) override;
+    ::grpc::ClientAsyncReader< ::grpc_services::storage::WatchChangesResponse>* AsyncWatchChangesRaw(::grpc::ClientContext* context, const ::grpc_services::storage::WatchChangesRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReader< ::grpc_services::storage::WatchChangesResponse>* PrepareAsyncWatchChangesRaw(::grpc::ClientContext* context, const ::grpc_services::storage::WatchChangesRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_GetDrive_;
     const ::grpc::internal::RpcMethod rpcmethod_GetDrives_;
     const ::grpc::internal::RpcMethod rpcmethod_GetItem_;
@@ -320,6 +344,7 @@ class StorageService final {
     const ::grpc::internal::RpcMethod rpcmethod_UpdateItem_;
     const ::grpc::internal::RpcMethod rpcmethod_RemoveDrive_;
     const ::grpc::internal::RpcMethod rpcmethod_RemoveItem_;
+    const ::grpc::internal::RpcMethod rpcmethod_WatchChanges_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -341,6 +366,7 @@ class StorageService final {
     virtual ::grpc::Status UpdateItem(::grpc::ServerContext* context, const ::grpc_services::storage::UpdateItemRequest* request, ::grpc_services::storage::UpdateItemResponse* response);
     virtual ::grpc::Status RemoveDrive(::grpc::ServerContext* context, const ::grpc_services::storage::RemoveDriveRequest* request, ::grpc_services::storage::RemoveDriveResponse* response);
     virtual ::grpc::Status RemoveItem(::grpc::ServerContext* context, const ::grpc_services::storage::RemoveItemRequest* request, ::grpc_services::storage::RemoveItemResponse* response);
+    virtual ::grpc::Status WatchChanges(::grpc::ServerContext* context, const ::grpc_services::storage::WatchChangesRequest* request, ::grpc::ServerWriter< ::grpc_services::storage::WatchChangesResponse>* writer);
   };
   template <class BaseClass>
   class WithAsyncMethod_GetDrive : public BaseClass {
@@ -622,7 +648,27 @@ class StorageService final {
       ::grpc::Service::RequestAsyncUnary(13, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_GetDrive<WithAsyncMethod_GetDrives<WithAsyncMethod_GetItem<WithAsyncMethod_GetChildren<WithAsyncMethod_GetContent<WithAsyncMethod_GetContentStream<WithAsyncMethod_CreateDrive<WithAsyncMethod_CreateItem<WithAsyncMethod_PutContentStream<WithAsyncMethod_TruncateContent<WithAsyncMethod_UpdateDrive<WithAsyncMethod_UpdateItem<WithAsyncMethod_RemoveDrive<WithAsyncMethod_RemoveItem<Service > > > > > > > > > > > > > > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_WatchChanges : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_WatchChanges() {
+      ::grpc::Service::MarkMethodAsync(14);
+    }
+    ~WithAsyncMethod_WatchChanges() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status WatchChanges(::grpc::ServerContext* context, const ::grpc_services::storage::WatchChangesRequest* request, ::grpc::ServerWriter< ::grpc_services::storage::WatchChangesResponse>* writer) final override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestWatchChanges(::grpc::ServerContext* context, ::grpc_services::storage::WatchChangesRequest* request, ::grpc::ServerAsyncWriter< ::grpc_services::storage::WatchChangesResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(14, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_GetDrive<WithAsyncMethod_GetDrives<WithAsyncMethod_GetItem<WithAsyncMethod_GetChildren<WithAsyncMethod_GetContent<WithAsyncMethod_GetContentStream<WithAsyncMethod_CreateDrive<WithAsyncMethod_CreateItem<WithAsyncMethod_PutContentStream<WithAsyncMethod_TruncateContent<WithAsyncMethod_UpdateDrive<WithAsyncMethod_UpdateItem<WithAsyncMethod_RemoveDrive<WithAsyncMethod_RemoveItem<WithAsyncMethod_WatchChanges<Service > > > > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithGenericMethod_GetDrive : public BaseClass {
    private:
@@ -857,6 +903,23 @@ class StorageService final {
     }
     // disable synchronous version of this method
     ::grpc::Status RemoveItem(::grpc::ServerContext* context, const ::grpc_services::storage::RemoveItemRequest* request, ::grpc_services::storage::RemoveItemResponse* response) final override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_WatchChanges : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_WatchChanges() {
+      ::grpc::Service::MarkMethodGeneric(14);
+    }
+    ~WithGenericMethod_WatchChanges() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status WatchChanges(::grpc::ServerContext* context, const ::grpc_services::storage::WatchChangesRequest* request, ::grpc::ServerWriter< ::grpc_services::storage::WatchChangesResponse>* writer) final override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1122,8 +1185,28 @@ class StorageService final {
     // replace default version of method with split streamed
     virtual ::grpc::Status StreamedGetContentStream(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::grpc_services::storage::GetContentStreamRequest,::grpc_services::storage::GetContentStreamResponse>* server_split_streamer) = 0;
   };
-  typedef WithSplitStreamingMethod_GetContentStream<Service > SplitStreamedService;
-  typedef WithStreamedUnaryMethod_GetDrive<WithStreamedUnaryMethod_GetDrives<WithStreamedUnaryMethod_GetItem<WithStreamedUnaryMethod_GetChildren<WithStreamedUnaryMethod_GetContent<WithSplitStreamingMethod_GetContentStream<WithStreamedUnaryMethod_CreateDrive<WithStreamedUnaryMethod_CreateItem<WithStreamedUnaryMethod_TruncateContent<WithStreamedUnaryMethod_UpdateDrive<WithStreamedUnaryMethod_UpdateItem<WithStreamedUnaryMethod_RemoveDrive<WithStreamedUnaryMethod_RemoveItem<Service > > > > > > > > > > > > > StreamedService;
+  template <class BaseClass>
+  class WithSplitStreamingMethod_WatchChanges : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithSplitStreamingMethod_WatchChanges() {
+      ::grpc::Service::MarkMethodStreamed(14,
+        new ::grpc::internal::SplitServerStreamingHandler< ::grpc_services::storage::WatchChangesRequest, ::grpc_services::storage::WatchChangesResponse>(std::bind(&WithSplitStreamingMethod_WatchChanges<BaseClass>::StreamedWatchChanges, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithSplitStreamingMethod_WatchChanges() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status WatchChanges(::grpc::ServerContext* context, const ::grpc_services::storage::WatchChangesRequest* request, ::grpc::ServerWriter< ::grpc_services::storage::WatchChangesResponse>* writer) final override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with split streamed
+    virtual ::grpc::Status StreamedWatchChanges(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::grpc_services::storage::WatchChangesRequest,::grpc_services::storage::WatchChangesResponse>* server_split_streamer) = 0;
+  };
+  typedef WithSplitStreamingMethod_GetContentStream<WithSplitStreamingMethod_WatchChanges<Service > > SplitStreamedService;
+  typedef WithStreamedUnaryMethod_GetDrive<WithStreamedUnaryMethod_GetDrives<WithStreamedUnaryMethod_GetItem<WithStreamedUnaryMethod_GetChildren<WithStreamedUnaryMethod_GetContent<WithSplitStreamingMethod_GetContentStream<WithStreamedUnaryMethod_CreateDrive<WithStreamedUnaryMethod_CreateItem<WithStreamedUnaryMethod_TruncateContent<WithStreamedUnaryMethod_UpdateDrive<WithStreamedUnaryMethod_UpdateItem<WithStreamedUnaryMethod_RemoveDrive<WithStreamedUnaryMethod_RemoveItem<WithSplitStreamingMethod_WatchChanges<Service > > > > > > > > > > > > > > StreamedService;
 };
 
 }  // namespace storage

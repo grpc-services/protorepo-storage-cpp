@@ -295,6 +295,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::grpc_services::storage::FileFacet, hashes_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::grpc_services::storage::FileFacet, mime_type_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::grpc_services::storage::FileFacet, audio_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::grpc_services::storage::FileFacet, size_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::grpc_services::storage::AudioFacet, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -325,7 +326,6 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::grpc_services::storage::Item, created_time_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::grpc_services::storage::Item, last_modified_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::grpc_services::storage::Item, parent_id_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::grpc_services::storage::Item, size_),
   offsetof(::grpc_services::storage::ItemDefaultTypeInternal, file_),
   offsetof(::grpc_services::storage::ItemDefaultTypeInternal, folder_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::grpc_services::storage::Item, test_type_),
@@ -352,9 +352,9 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 0, -1, sizeof(::grpc_services::storage::Hashes)},
   { 9, -1, sizeof(::grpc_services::storage::FolderFacet)},
   { 15, -1, sizeof(::grpc_services::storage::FileFacet)},
-  { 23, -1, sizeof(::grpc_services::storage::AudioFacet)},
-  { 31, -1, sizeof(::grpc_services::storage::Drive)},
-  { 42, -1, sizeof(::grpc_services::storage::Item)},
+  { 24, -1, sizeof(::grpc_services::storage::AudioFacet)},
+  { 32, -1, sizeof(::grpc_services::storage::Drive)},
+  { 43, -1, sizeof(::grpc_services::storage::Item)},
   { 57, -1, sizeof(::grpc_services::storage::ItemCreatedEvent)},
   { 63, -1, sizeof(::grpc_services::storage::ItemRemovedEvent)},
   { 69, -1, sizeof(::grpc_services::storage::ItemContentUpdatedEvent)},
@@ -398,33 +398,33 @@ void AddDescriptorsImpl() {
       "storage\032\026common/Timestamp.proto\"B\n\006Hashe"
       "s\022\r\n\005crc32\030\001 \001(\t\022\014\n\004sha1\030\002 \001(\t\022\013\n\003md5\030\003 "
       "\001(\t\022\016\n\006sha512\030\004 \001(\t\" \n\013FolderFacet\022\021\n\tnu"
-      "m_items\030\001 \001(\004\"\177\n\tFileFacet\022-\n\006hashes\030\001 \001"
-      "(\0132\035.grpc_services.storage.Hashes\022\021\n\tmim"
-      "e_type\030\002 \001(\t\0220\n\005audio\030\003 \001(\0132!.grpc_servi"
-      "ces.storage.AudioFacet\"\?\n\nAudioFacet\022\017\n\007"
-      "bitrate\030\001 \001(\004\022\020\n\010duration\030\002 \001(\004\022\016\n\006is_vb"
-      "r\030\003 \001(\010\"\342\001\n\005Drive\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 "
-      "\001(\t\022\023\n\013description\030\003 \001(\t\0225\n\014created_time"
-      "\030\004 \001(\0132\037.grpc_services.common.Timestamp\022"
-      "6\n\rlast_modified\030\005 \001(\0132\037.grpc_services.c"
-      "ommon.Timestamp\022;\n\022last_item_modified\030\006 "
-      "\001(\0132\037.grpc_services.common.Timestamp\"\272\002\n"
-      "\004Item\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013descr"
-      "iption\030\003 \001(\t\0225\n\014created_time\030\004 \001(\0132\037.grp"
-      "c_services.common.Timestamp\0226\n\rlast_modi"
-      "fied\030\005 \001(\0132\037.grpc_services.common.Timest"
-      "amp\022\021\n\tparent_id\030\006 \001(\t\022\014\n\004size\030\007 \001(\004\0220\n\004"
-      "file\030\010 \001(\0132 .grpc_services.storage.FileF"
-      "acetH\000\0224\n\006folder\030\t \001(\0132\".grpc_services.s"
-      "torage.FolderFacetH\000B\013\n\ttest_type\"=\n\020Ite"
-      "mCreatedEvent\022)\n\004item\030\001 \001(\0132\033.grpc_servi"
-      "ces.storage.Item\"=\n\020ItemRemovedEvent\022)\n\004"
-      "item\030\001 \001(\0132\033.grpc_services.storage.Item\""
-      "D\n\027ItemContentUpdatedEvent\022)\n\004item\030\001 \001(\013"
-      "2\033.grpc_services.storage.Itemb\006proto3"
+      "m_items\030\001 \001(\004\"\215\001\n\tFileFacet\022-\n\006hashes\030\001 "
+      "\001(\0132\035.grpc_services.storage.Hashes\022\021\n\tmi"
+      "me_type\030\002 \001(\t\0220\n\005audio\030\003 \001(\0132!.grpc_serv"
+      "ices.storage.AudioFacet\022\014\n\004size\030\004 \001(\004\"\?\n"
+      "\nAudioFacet\022\017\n\007bitrate\030\001 \001(\004\022\020\n\010duration"
+      "\030\002 \001(\004\022\016\n\006is_vbr\030\003 \001(\010\"\342\001\n\005Drive\022\n\n\002id\030\001"
+      " \001(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013description\030\003 \001(\t\022"
+      "5\n\014created_time\030\004 \001(\0132\037.grpc_services.co"
+      "mmon.Timestamp\0226\n\rlast_modified\030\005 \001(\0132\037."
+      "grpc_services.common.Timestamp\022;\n\022last_i"
+      "tem_modified\030\006 \001(\0132\037.grpc_services.commo"
+      "n.Timestamp\"\254\002\n\004Item\022\n\n\002id\030\001 \001(\t\022\014\n\004name"
+      "\030\002 \001(\t\022\023\n\013description\030\003 \001(\t\0225\n\014created_t"
+      "ime\030\004 \001(\0132\037.grpc_services.common.Timesta"
+      "mp\0226\n\rlast_modified\030\005 \001(\0132\037.grpc_service"
+      "s.common.Timestamp\022\021\n\tparent_id\030\006 \001(\t\0220\n"
+      "\004file\030\007 \001(\0132 .grpc_services.storage.File"
+      "FacetH\000\0224\n\006folder\030\010 \001(\0132\".grpc_services."
+      "storage.FolderFacetH\000B\013\n\ttest_type\"=\n\020It"
+      "emCreatedEvent\022)\n\004item\030\001 \001(\0132\033.grpc_serv"
+      "ices.storage.Item\"=\n\020ItemRemovedEvent\022)\n"
+      "\004item\030\001 \001(\0132\033.grpc_services.storage.Item"
+      "\"D\n\027ItemContentUpdatedEvent\022)\n\004item\030\001 \001("
+      "\0132\033.grpc_services.storage.Itemb\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1117);
+      descriptor, 1118);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "storage/entities.proto", &protobuf_RegisterTypes);
   ::protobuf_common_2fTimestamp_2eproto::AddDescriptors();
@@ -1121,6 +1121,7 @@ void FileFacet::InitAsDefaultInstance() {
 const int FileFacet::kHashesFieldNumber;
 const int FileFacet::kMimeTypeFieldNumber;
 const int FileFacet::kAudioFieldNumber;
+const int FileFacet::kSizeFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 FileFacet::FileFacet()
@@ -1150,14 +1151,15 @@ FileFacet::FileFacet(const FileFacet& from)
   } else {
     audio_ = NULL;
   }
+  size_ = from.size_;
   // @@protoc_insertion_point(copy_constructor:grpc_services.storage.FileFacet)
 }
 
 void FileFacet::SharedCtor() {
   mime_type_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&hashes_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&audio_) -
-      reinterpret_cast<char*>(&hashes_)) + sizeof(audio_));
+      reinterpret_cast<char*>(&size_) -
+      reinterpret_cast<char*>(&hashes_)) + sizeof(size_));
   _cached_size_ = 0;
 }
 
@@ -1210,6 +1212,7 @@ void FileFacet::Clear() {
     delete audio_;
   }
   audio_ = NULL;
+  size_ = GOOGLE_ULONGLONG(0);
   _internal_metadata_.Clear();
 }
 
@@ -1257,6 +1260,20 @@ bool FileFacet::MergePartialFromCodedStream(
             static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_audio()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint64 size = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &size_)));
         } else {
           goto handle_unusual;
         }
@@ -1311,6 +1328,11 @@ void FileFacet::SerializeWithCachedSizes(
       3, *this->audio_, output);
   }
 
+  // uint64 size = 4;
+  if (this->size() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(4, this->size(), output);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
@@ -1350,6 +1372,11 @@ void FileFacet::SerializeWithCachedSizes(
         3, *this->audio_, deterministic, target);
   }
 
+  // uint64 size = 4;
+  if (this->size() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(4, this->size(), target);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
@@ -1386,6 +1413,13 @@ size_t FileFacet::ByteSizeLong() const {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSize(
         *this->audio_);
+  }
+
+  // uint64 size = 4;
+  if (this->size() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->size());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -1427,6 +1461,9 @@ void FileFacet::MergeFrom(const FileFacet& from) {
   if (from.has_audio()) {
     mutable_audio()->::grpc_services::storage::AudioFacet::MergeFrom(from.audio());
   }
+  if (from.size() != 0) {
+    set_size(from.size());
+  }
 }
 
 void FileFacet::CopyFrom(const ::google::protobuf::Message& from) {
@@ -1456,6 +1493,7 @@ void FileFacet::InternalSwap(FileFacet* other) {
   mime_type_.Swap(&other->mime_type_);
   swap(hashes_, other->hashes_);
   swap(audio_, other->audio_);
+  swap(size_, other->size_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
@@ -2377,7 +2415,6 @@ const int Item::kDescriptionFieldNumber;
 const int Item::kCreatedTimeFieldNumber;
 const int Item::kLastModifiedFieldNumber;
 const int Item::kParentIdFieldNumber;
-const int Item::kSizeFieldNumber;
 const int Item::kFileFieldNumber;
 const int Item::kFolderFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
@@ -2421,7 +2458,6 @@ Item::Item(const Item& from)
   } else {
     last_modified_ = NULL;
   }
-  size_ = from.size_;
   clear_has_test_type();
   switch (from.test_type_case()) {
     case kFile: {
@@ -2445,8 +2481,8 @@ void Item::SharedCtor() {
   description_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   parent_id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&created_time_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&size_) -
-      reinterpret_cast<char*>(&created_time_)) + sizeof(size_));
+      reinterpret_cast<char*>(&last_modified_) -
+      reinterpret_cast<char*>(&created_time_)) + sizeof(last_modified_));
   clear_has_test_type();
   _cached_size_ = 0;
 }
@@ -2528,7 +2564,6 @@ void Item::Clear() {
     delete last_modified_;
   }
   last_modified_ = NULL;
-  size_ = GOOGLE_ULONGLONG(0);
   clear_test_type();
   _internal_metadata_.Clear();
 }
@@ -2631,24 +2666,10 @@ bool Item::MergePartialFromCodedStream(
         break;
       }
 
-      // uint64 size = 7;
+      // .grpc_services.storage.FileFacet file = 7;
       case 7: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(56u /* 56 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
-                 input, &size_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .grpc_services.storage.FileFacet file = 8;
-      case 8: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(66u /* 66 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(58u /* 58 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_file()));
         } else {
@@ -2657,10 +2678,10 @@ bool Item::MergePartialFromCodedStream(
         break;
       }
 
-      // .grpc_services.storage.FolderFacet folder = 9;
-      case 9: {
+      // .grpc_services.storage.FolderFacet folder = 8;
+      case 8: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(74u /* 74 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(66u /* 66 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_folder()));
         } else {
@@ -2747,21 +2768,16 @@ void Item::SerializeWithCachedSizes(
       6, this->parent_id(), output);
   }
 
-  // uint64 size = 7;
-  if (this->size() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(7, this->size(), output);
-  }
-
-  // .grpc_services.storage.FileFacet file = 8;
+  // .grpc_services.storage.FileFacet file = 7;
   if (has_file()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      8, *test_type_.file_, output);
+      7, *test_type_.file_, output);
   }
 
-  // .grpc_services.storage.FolderFacet folder = 9;
+  // .grpc_services.storage.FolderFacet folder = 8;
   if (has_folder()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      9, *test_type_.folder_, output);
+      8, *test_type_.folder_, output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -2836,23 +2852,18 @@ void Item::SerializeWithCachedSizes(
         6, this->parent_id(), target);
   }
 
-  // uint64 size = 7;
-  if (this->size() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(7, this->size(), target);
-  }
-
-  // .grpc_services.storage.FileFacet file = 8;
+  // .grpc_services.storage.FileFacet file = 7;
   if (has_file()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        8, *test_type_.file_, deterministic, target);
+        7, *test_type_.file_, deterministic, target);
   }
 
-  // .grpc_services.storage.FolderFacet folder = 9;
+  // .grpc_services.storage.FolderFacet folder = 8;
   if (has_folder()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        9, *test_type_.folder_, deterministic, target);
+        8, *test_type_.folder_, deterministic, target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -2914,22 +2925,15 @@ size_t Item::ByteSizeLong() const {
         *this->last_modified_);
   }
 
-  // uint64 size = 7;
-  if (this->size() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt64Size(
-        this->size());
-  }
-
   switch (test_type_case()) {
-    // .grpc_services.storage.FileFacet file = 8;
+    // .grpc_services.storage.FileFacet file = 7;
     case kFile: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSize(
           *test_type_.file_);
       break;
     }
-    // .grpc_services.storage.FolderFacet folder = 9;
+    // .grpc_services.storage.FolderFacet folder = 8;
     case kFolder: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSize(
@@ -2991,9 +2995,6 @@ void Item::MergeFrom(const Item& from) {
   if (from.has_last_modified()) {
     mutable_last_modified()->::grpc_services::common::Timestamp::MergeFrom(from.last_modified());
   }
-  if (from.size() != 0) {
-    set_size(from.size());
-  }
   switch (from.test_type_case()) {
     case kFile: {
       mutable_file()->::grpc_services::storage::FileFacet::MergeFrom(from.file());
@@ -3039,7 +3040,6 @@ void Item::InternalSwap(Item* other) {
   parent_id_.Swap(&other->parent_id_);
   swap(created_time_, other->created_time_);
   swap(last_modified_, other->last_modified_);
-  swap(size_, other->size_);
   swap(test_type_, other->test_type_);
   swap(_oneof_case_[0], other->_oneof_case_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);

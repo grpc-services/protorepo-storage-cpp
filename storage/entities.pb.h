@@ -474,6 +474,12 @@ class FileFacet : public ::google::protobuf::Message /* @@protoc_insertion_point
   ::grpc_services::storage::AudioFacet* mutable_audio();
   void set_allocated_audio(::grpc_services::storage::AudioFacet* audio);
 
+  // uint64 size = 4;
+  void clear_size();
+  static const int kSizeFieldNumber = 4;
+  ::google::protobuf::uint64 size() const;
+  void set_size(::google::protobuf::uint64 value);
+
   // @@protoc_insertion_point(class_scope:grpc_services.storage.FileFacet)
  private:
 
@@ -481,6 +487,7 @@ class FileFacet : public ::google::protobuf::Message /* @@protoc_insertion_point
   ::google::protobuf::internal::ArenaStringPtr mime_type_;
   ::grpc_services::storage::Hashes* hashes_;
   ::grpc_services::storage::AudioFacet* audio_;
+  ::google::protobuf::uint64 size_;
   mutable int _cached_size_;
   friend struct ::protobuf_storage_2fentities_2eproto::TableStruct;
   friend void ::protobuf_storage_2fentities_2eproto::InitDefaultsFileFacetImpl();
@@ -797,8 +804,8 @@ class Item : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
   static const Item& default_instance();
 
   enum TestTypeCase {
-    kFile = 8,
-    kFolder = 9,
+    kFile = 7,
+    kFolder = 8,
     TEST_TYPE_NOT_SET = 0,
   };
 
@@ -929,25 +936,19 @@ class Item : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
   ::grpc_services::common::Timestamp* mutable_last_modified();
   void set_allocated_last_modified(::grpc_services::common::Timestamp* last_modified);
 
-  // uint64 size = 7;
-  void clear_size();
-  static const int kSizeFieldNumber = 7;
-  ::google::protobuf::uint64 size() const;
-  void set_size(::google::protobuf::uint64 value);
-
-  // .grpc_services.storage.FileFacet file = 8;
+  // .grpc_services.storage.FileFacet file = 7;
   bool has_file() const;
   void clear_file();
-  static const int kFileFieldNumber = 8;
+  static const int kFileFieldNumber = 7;
   const ::grpc_services::storage::FileFacet& file() const;
   ::grpc_services::storage::FileFacet* release_file();
   ::grpc_services::storage::FileFacet* mutable_file();
   void set_allocated_file(::grpc_services::storage::FileFacet* file);
 
-  // .grpc_services.storage.FolderFacet folder = 9;
+  // .grpc_services.storage.FolderFacet folder = 8;
   bool has_folder() const;
   void clear_folder();
-  static const int kFolderFieldNumber = 9;
+  static const int kFolderFieldNumber = 8;
   const ::grpc_services::storage::FolderFacet& folder() const;
   ::grpc_services::storage::FolderFacet* release_folder();
   ::grpc_services::storage::FolderFacet* mutable_folder();
@@ -970,7 +971,6 @@ class Item : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
   ::google::protobuf::internal::ArenaStringPtr parent_id_;
   ::grpc_services::common::Timestamp* created_time_;
   ::grpc_services::common::Timestamp* last_modified_;
-  ::google::protobuf::uint64 size_;
   union TestTypeUnion {
     TestTypeUnion() {}
     ::grpc_services::storage::FileFacet* file_;
@@ -1686,6 +1686,20 @@ inline void FileFacet::set_allocated_audio(::grpc_services::storage::AudioFacet*
   // @@protoc_insertion_point(field_set_allocated:grpc_services.storage.FileFacet.audio)
 }
 
+// uint64 size = 4;
+inline void FileFacet::clear_size() {
+  size_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 FileFacet::size() const {
+  // @@protoc_insertion_point(field_get:grpc_services.storage.FileFacet.size)
+  return size_;
+}
+inline void FileFacet::set_size(::google::protobuf::uint64 value) {
+  
+  size_ = value;
+  // @@protoc_insertion_point(field_set:grpc_services.storage.FileFacet.size)
+}
+
 // -------------------------------------------------------------------
 
 // AudioFacet
@@ -2331,21 +2345,7 @@ inline void Item::set_allocated_parent_id(::std::string* parent_id) {
   // @@protoc_insertion_point(field_set_allocated:grpc_services.storage.Item.parent_id)
 }
 
-// uint64 size = 7;
-inline void Item::clear_size() {
-  size_ = GOOGLE_ULONGLONG(0);
-}
-inline ::google::protobuf::uint64 Item::size() const {
-  // @@protoc_insertion_point(field_get:grpc_services.storage.Item.size)
-  return size_;
-}
-inline void Item::set_size(::google::protobuf::uint64 value) {
-  
-  size_ = value;
-  // @@protoc_insertion_point(field_set:grpc_services.storage.Item.size)
-}
-
-// .grpc_services.storage.FileFacet file = 8;
+// .grpc_services.storage.FileFacet file = 7;
 inline bool Item::has_file() const {
   return test_type_case() == kFile;
 }
@@ -2385,7 +2385,7 @@ inline ::grpc_services::storage::FileFacet* Item::mutable_file() {
   return test_type_.file_;
 }
 
-// .grpc_services.storage.FolderFacet folder = 9;
+// .grpc_services.storage.FolderFacet folder = 8;
 inline bool Item::has_folder() const {
   return test_type_case() == kFolder;
 }

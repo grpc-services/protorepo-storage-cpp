@@ -2010,6 +2010,12 @@ class CreateItemRequest : public ::google::protobuf::Message /* @@protoc_inserti
   ::std::string* release_parent_id();
   void set_allocated_parent_id(::std::string* parent_id);
 
+  // .grpc_services.storage.ItemType type = 5;
+  void clear_type();
+  static const int kTypeFieldNumber = 5;
+  ::grpc_services::storage::ItemType type() const;
+  void set_type(::grpc_services::storage::ItemType value);
+
   // @@protoc_insertion_point(class_scope:grpc_services.storage.CreateItemRequest)
  private:
 
@@ -2018,6 +2024,7 @@ class CreateItemRequest : public ::google::protobuf::Message /* @@protoc_inserti
   ::google::protobuf::internal::ArenaStringPtr name_;
   ::google::protobuf::internal::ArenaStringPtr description_;
   ::google::protobuf::internal::ArenaStringPtr parent_id_;
+  int type_;
   mutable int _cached_size_;
   friend struct ::protobuf_storage_2fstorage_2eproto::TableStruct;
   friend void ::protobuf_storage_2fstorage_2eproto::InitDefaultsCreateItemRequestImpl();
@@ -2889,10 +2896,24 @@ class UpdateItemRequest : public ::google::protobuf::Message /* @@protoc_inserti
 
   // accessors -------------------------------------------------------
 
-  // .grpc_services.storage.Item item = 1;
+  // string drive = 1;
+  void clear_drive();
+  static const int kDriveFieldNumber = 1;
+  const ::std::string& drive() const;
+  void set_drive(const ::std::string& value);
+  #if LANG_CXX11
+  void set_drive(::std::string&& value);
+  #endif
+  void set_drive(const char* value);
+  void set_drive(const char* value, size_t size);
+  ::std::string* mutable_drive();
+  ::std::string* release_drive();
+  void set_allocated_drive(::std::string* drive);
+
+  // .grpc_services.storage.Item item = 2;
   bool has_item() const;
   void clear_item();
-  static const int kItemFieldNumber = 1;
+  static const int kItemFieldNumber = 2;
   const ::grpc_services::storage::Item& item() const;
   ::grpc_services::storage::Item* release_item();
   ::grpc_services::storage::Item* mutable_item();
@@ -2902,6 +2923,7 @@ class UpdateItemRequest : public ::google::protobuf::Message /* @@protoc_inserti
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr drive_;
   ::grpc_services::storage::Item* item_;
   mutable int _cached_size_;
   friend struct ::protobuf_storage_2fstorage_2eproto::TableStruct;
@@ -5021,6 +5043,20 @@ inline void CreateItemRequest::set_allocated_parent_id(::std::string* parent_id)
   // @@protoc_insertion_point(field_set_allocated:grpc_services.storage.CreateItemRequest.parent_id)
 }
 
+// .grpc_services.storage.ItemType type = 5;
+inline void CreateItemRequest::clear_type() {
+  type_ = 0;
+}
+inline ::grpc_services::storage::ItemType CreateItemRequest::type() const {
+  // @@protoc_insertion_point(field_get:grpc_services.storage.CreateItemRequest.type)
+  return static_cast< ::grpc_services::storage::ItemType >(type_);
+}
+inline void CreateItemRequest::set_type(::grpc_services::storage::ItemType value) {
+  
+  type_ = value;
+  // @@protoc_insertion_point(field_set:grpc_services.storage.CreateItemRequest.type)
+}
+
 // -------------------------------------------------------------------
 
 // CreateItemResponse
@@ -5566,7 +5602,60 @@ inline void UpdateDriveResponse::set_allocated_drive(::grpc_services::storage::D
 
 // UpdateItemRequest
 
-// .grpc_services.storage.Item item = 1;
+// string drive = 1;
+inline void UpdateItemRequest::clear_drive() {
+  drive_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& UpdateItemRequest::drive() const {
+  // @@protoc_insertion_point(field_get:grpc_services.storage.UpdateItemRequest.drive)
+  return drive_.GetNoArena();
+}
+inline void UpdateItemRequest::set_drive(const ::std::string& value) {
+  
+  drive_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:grpc_services.storage.UpdateItemRequest.drive)
+}
+#if LANG_CXX11
+inline void UpdateItemRequest::set_drive(::std::string&& value) {
+  
+  drive_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:grpc_services.storage.UpdateItemRequest.drive)
+}
+#endif
+inline void UpdateItemRequest::set_drive(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  drive_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:grpc_services.storage.UpdateItemRequest.drive)
+}
+inline void UpdateItemRequest::set_drive(const char* value, size_t size) {
+  
+  drive_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:grpc_services.storage.UpdateItemRequest.drive)
+}
+inline ::std::string* UpdateItemRequest::mutable_drive() {
+  
+  // @@protoc_insertion_point(field_mutable:grpc_services.storage.UpdateItemRequest.drive)
+  return drive_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* UpdateItemRequest::release_drive() {
+  // @@protoc_insertion_point(field_release:grpc_services.storage.UpdateItemRequest.drive)
+  
+  return drive_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void UpdateItemRequest::set_allocated_drive(::std::string* drive) {
+  if (drive != NULL) {
+    
+  } else {
+    
+  }
+  drive_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), drive);
+  // @@protoc_insertion_point(field_set_allocated:grpc_services.storage.UpdateItemRequest.drive)
+}
+
+// .grpc_services.storage.Item item = 2;
 inline bool UpdateItemRequest::has_item() const {
   return this != internal_default_instance() && item_ != NULL;
 }

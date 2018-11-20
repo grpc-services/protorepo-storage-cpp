@@ -936,6 +936,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::grpc_services::storage::CreateItemRequest, name_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::grpc_services::storage::CreateItemRequest, description_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::grpc_services::storage::CreateItemRequest, parent_id_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::grpc_services::storage::CreateItemRequest, type_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::grpc_services::storage::CreateItemResponse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -988,6 +989,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::grpc_services::storage::UpdateItemRequest, drive_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::grpc_services::storage::UpdateItemRequest, item_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::grpc_services::storage::UpdateItemResponse, _internal_metadata_),
@@ -1050,21 +1052,21 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 89, -1, sizeof(::grpc_services::storage::CreateDriveRequest)},
   { 96, -1, sizeof(::grpc_services::storage::CreateDriveResponse)},
   { 102, -1, sizeof(::grpc_services::storage::CreateItemRequest)},
-  { 111, -1, sizeof(::grpc_services::storage::CreateItemResponse)},
-  { 117, -1, sizeof(::grpc_services::storage::PutContentStreamRequest)},
-  { 126, -1, sizeof(::grpc_services::storage::PutContentStreamResponse)},
-  { 132, -1, sizeof(::grpc_services::storage::TruncateContentRequest)},
-  { 140, -1, sizeof(::grpc_services::storage::TruncateContentResponse)},
-  { 146, -1, sizeof(::grpc_services::storage::UpdateDriveRequest)},
-  { 152, -1, sizeof(::grpc_services::storage::UpdateDriveResponse)},
-  { 158, -1, sizeof(::grpc_services::storage::UpdateItemRequest)},
-  { 164, -1, sizeof(::grpc_services::storage::UpdateItemResponse)},
-  { 170, -1, sizeof(::grpc_services::storage::RemoveDriveRequest)},
-  { 176, -1, sizeof(::grpc_services::storage::RemoveDriveResponse)},
-  { 181, -1, sizeof(::grpc_services::storage::RemoveItemRequest)},
-  { 188, -1, sizeof(::grpc_services::storage::RemoveItemResponse)},
-  { 193, -1, sizeof(::grpc_services::storage::WatchChangesRequest)},
-  { 199, -1, sizeof(::grpc_services::storage::WatchChangesResponse)},
+  { 112, -1, sizeof(::grpc_services::storage::CreateItemResponse)},
+  { 118, -1, sizeof(::grpc_services::storage::PutContentStreamRequest)},
+  { 127, -1, sizeof(::grpc_services::storage::PutContentStreamResponse)},
+  { 133, -1, sizeof(::grpc_services::storage::TruncateContentRequest)},
+  { 141, -1, sizeof(::grpc_services::storage::TruncateContentResponse)},
+  { 147, -1, sizeof(::grpc_services::storage::UpdateDriveRequest)},
+  { 153, -1, sizeof(::grpc_services::storage::UpdateDriveResponse)},
+  { 159, -1, sizeof(::grpc_services::storage::UpdateItemRequest)},
+  { 166, -1, sizeof(::grpc_services::storage::UpdateItemResponse)},
+  { 172, -1, sizeof(::grpc_services::storage::RemoveDriveRequest)},
+  { 178, -1, sizeof(::grpc_services::storage::RemoveDriveResponse)},
+  { 183, -1, sizeof(::grpc_services::storage::RemoveItemRequest)},
+  { 190, -1, sizeof(::grpc_services::storage::RemoveItemResponse)},
+  { 195, -1, sizeof(::grpc_services::storage::WatchChangesRequest)},
+  { 201, -1, sizeof(::grpc_services::storage::WatchChangesResponse)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -1148,78 +1150,79 @@ void AddDescriptorsImpl() {
       "ent\030\004 \001(\014\"7\n\022CreateDriveRequest\022\014\n\004name\030"
       "\001 \001(\t\022\023\n\013description\030\002 \001(\t\"B\n\023CreateDriv"
       "eResponse\022+\n\005drive\030\001 \001(\0132\034.grpc_services"
-      ".storage.Drive\"[\n\021CreateItemRequest\022\020\n\010d"
-      "rive_id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013descripti"
-      "on\030\003 \001(\t\022\021\n\tparent_id\030\004 \001(\t\"\?\n\022CreateIte"
-      "mResponse\022)\n\004item\030\001 \001(\0132\033.grpc_services."
-      "storage.Item\"]\n\027PutContentStreamRequest\022"
-      "\020\n\010drive_id\030\001 \001(\t\022\017\n\007item_id\030\002 \001(\t\022\016\n\006of"
-      "fset\030\003 \001(\004\022\017\n\007content\030\004 \001(\014\"E\n\030PutConten"
-      "tStreamResponse\022)\n\004item\030\001 \001(\0132\033.grpc_ser"
-      "vices.storage.Item\"O\n\026TruncateContentReq"
-      "uest\022\020\n\010drive_id\030\001 \001(\t\022\017\n\007item_id\030\002 \001(\t\022"
-      "\022\n\nnew_length\030\003 \001(\004\"D\n\027TruncateContentRe"
-      "sponse\022)\n\004item\030\001 \001(\0132\033.grpc_services.sto"
-      "rage.Item\"A\n\022UpdateDriveRequest\022+\n\005drive"
-      "\030\001 \001(\0132\034.grpc_services.storage.Drive\"B\n\023"
-      "UpdateDriveResponse\022+\n\005drive\030\001 \001(\0132\034.grp"
-      "c_services.storage.Drive\">\n\021UpdateItemRe"
-      "quest\022)\n\004item\030\001 \001(\0132\033.grpc_services.stor"
-      "age.Item\"\?\n\022UpdateItemResponse\022)\n\004item\030\001"
-      " \001(\0132\033.grpc_services.storage.Item\"&\n\022Rem"
-      "oveDriveRequest\022\020\n\010drive_id\030\001 \001(\t\"\025\n\023Rem"
-      "oveDriveResponse\"6\n\021RemoveItemRequest\022\020\n"
-      "\010drive_id\030\001 \001(\t\022\017\n\007item_id\030\002 \001(\t\"\024\n\022Remo"
-      "veItemResponse\"\'\n\023WatchChangesRequest\022\020\n"
-      "\010drive_id\030\001 \001(\t\"\337\001\n\024WatchChangesResponse"
-      "\022:\n\007created\030\001 \001(\0132\'.grpc_services.storag"
-      "e.ItemCreatedEventH\000\022:\n\007removed\030\002 \001(\0132\'."
-      "grpc_services.storage.ItemRemovedEventH\000"
-      "\022A\n\007updated\030\003 \001(\0132..grpc_services.storag"
-      "e.ItemContentUpdatedEventH\000B\014\n\ntest_even"
-      "t2\226\014\n\016StorageService\022[\n\010GetDrive\022&.grpc_"
-      "services.storage.GetDriveRequest\032\'.grpc_"
-      "services.storage.GetDriveResponse\022^\n\tGet"
-      "Drives\022\'.grpc_services.storage.GetDrives"
-      "Request\032(.grpc_services.storage.GetDrive"
-      "sResponse\022X\n\007GetItem\022%.grpc_services.sto"
-      "rage.GetItemRequest\032&.grpc_services.stor"
-      "age.GetItemResponse\022d\n\013GetChildren\022).grp"
-      "c_services.storage.GetChildrenRequest\032*."
-      "grpc_services.storage.GetChildrenRespons"
-      "e\022a\n\nGetContent\022(.grpc_services.storage."
-      "GetContentRequest\032).grpc_services.storag"
-      "e.GetContentResponse\022u\n\020GetContentStream"
-      "\022..grpc_services.storage.GetContentStrea"
-      "mRequest\032/.grpc_services.storage.GetCont"
-      "entStreamResponse0\001\022d\n\013CreateDrive\022).grp"
-      "c_services.storage.CreateDriveRequest\032*."
-      "grpc_services.storage.CreateDriveRespons"
-      "e\022a\n\nCreateItem\022(.grpc_services.storage."
-      "CreateItemRequest\032).grpc_services.storag"
-      "e.CreateItemResponse\022u\n\020PutContentStream"
-      "\022..grpc_services.storage.PutContentStrea"
-      "mRequest\032/.grpc_services.storage.PutCont"
-      "entStreamResponse(\001\022p\n\017TruncateContent\022-"
-      ".grpc_services.storage.TruncateContentRe"
-      "quest\032..grpc_services.storage.TruncateCo"
-      "ntentResponse\022d\n\013UpdateDrive\022).grpc_serv"
-      "ices.storage.UpdateDriveRequest\032*.grpc_s"
-      "ervices.storage.UpdateDriveResponse\022a\n\nU"
-      "pdateItem\022(.grpc_services.storage.Update"
-      "ItemRequest\032).grpc_services.storage.Upda"
-      "teItemResponse\022d\n\013RemoveDrive\022).grpc_ser"
-      "vices.storage.RemoveDriveRequest\032*.grpc_"
-      "services.storage.RemoveDriveResponse\022a\n\n"
-      "RemoveItem\022(.grpc_services.storage.Remov"
-      "eItemRequest\032).grpc_services.storage.Rem"
-      "oveItemResponse\022i\n\014WatchChanges\022*.grpc_s"
-      "ervices.storage.WatchChangesRequest\032+.gr"
-      "pc_services.storage.WatchChangesResponse"
-      "0\001b\006proto3"
+      ".storage.Drive\"\212\001\n\021CreateItemRequest\022\020\n\010"
+      "drive_id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013descript"
+      "ion\030\003 \001(\t\022\021\n\tparent_id\030\004 \001(\t\022-\n\004type\030\005 \001"
+      "(\0162\037.grpc_services.storage.ItemType\"\?\n\022C"
+      "reateItemResponse\022)\n\004item\030\001 \001(\0132\033.grpc_s"
+      "ervices.storage.Item\"]\n\027PutContentStream"
+      "Request\022\020\n\010drive_id\030\001 \001(\t\022\017\n\007item_id\030\002 \001"
+      "(\t\022\016\n\006offset\030\003 \001(\004\022\017\n\007content\030\004 \001(\014\"E\n\030P"
+      "utContentStreamResponse\022)\n\004item\030\001 \001(\0132\033."
+      "grpc_services.storage.Item\"O\n\026TruncateCo"
+      "ntentRequest\022\020\n\010drive_id\030\001 \001(\t\022\017\n\007item_i"
+      "d\030\002 \001(\t\022\022\n\nnew_length\030\003 \001(\004\"D\n\027TruncateC"
+      "ontentResponse\022)\n\004item\030\001 \001(\0132\033.grpc_serv"
+      "ices.storage.Item\"A\n\022UpdateDriveRequest\022"
+      "+\n\005drive\030\001 \001(\0132\034.grpc_services.storage.D"
+      "rive\"B\n\023UpdateDriveResponse\022+\n\005drive\030\001 \001"
+      "(\0132\034.grpc_services.storage.Drive\"M\n\021Upda"
+      "teItemRequest\022\r\n\005drive\030\001 \001(\t\022)\n\004item\030\002 \001"
+      "(\0132\033.grpc_services.storage.Item\"\?\n\022Updat"
+      "eItemResponse\022)\n\004item\030\001 \001(\0132\033.grpc_servi"
+      "ces.storage.Item\"&\n\022RemoveDriveRequest\022\020"
+      "\n\010drive_id\030\001 \001(\t\"\025\n\023RemoveDriveResponse\""
+      "6\n\021RemoveItemRequest\022\020\n\010drive_id\030\001 \001(\t\022\017"
+      "\n\007item_id\030\002 \001(\t\"\024\n\022RemoveItemResponse\"\'\n"
+      "\023WatchChangesRequest\022\020\n\010drive_id\030\001 \001(\t\"\337"
+      "\001\n\024WatchChangesResponse\022:\n\007created\030\001 \001(\013"
+      "2\'.grpc_services.storage.ItemCreatedEven"
+      "tH\000\022:\n\007removed\030\002 \001(\0132\'.grpc_services.sto"
+      "rage.ItemRemovedEventH\000\022A\n\007updated\030\003 \001(\013"
+      "2..grpc_services.storage.ItemContentUpda"
+      "tedEventH\000B\014\n\ntest_event2\226\014\n\016StorageServ"
+      "ice\022[\n\010GetDrive\022&.grpc_services.storage."
+      "GetDriveRequest\032\'.grpc_services.storage."
+      "GetDriveResponse\022^\n\tGetDrives\022\'.grpc_ser"
+      "vices.storage.GetDrivesRequest\032(.grpc_se"
+      "rvices.storage.GetDrivesResponse\022X\n\007GetI"
+      "tem\022%.grpc_services.storage.GetItemReque"
+      "st\032&.grpc_services.storage.GetItemRespon"
+      "se\022d\n\013GetChildren\022).grpc_services.storag"
+      "e.GetChildrenRequest\032*.grpc_services.sto"
+      "rage.GetChildrenResponse\022a\n\nGetContent\022("
+      ".grpc_services.storage.GetContentRequest"
+      "\032).grpc_services.storage.GetContentRespo"
+      "nse\022u\n\020GetContentStream\022..grpc_services."
+      "storage.GetContentStreamRequest\032/.grpc_s"
+      "ervices.storage.GetContentStreamResponse"
+      "0\001\022d\n\013CreateDrive\022).grpc_services.storag"
+      "e.CreateDriveRequest\032*.grpc_services.sto"
+      "rage.CreateDriveResponse\022a\n\nCreateItem\022("
+      ".grpc_services.storage.CreateItemRequest"
+      "\032).grpc_services.storage.CreateItemRespo"
+      "nse\022u\n\020PutContentStream\022..grpc_services."
+      "storage.PutContentStreamRequest\032/.grpc_s"
+      "ervices.storage.PutContentStreamResponse"
+      "(\001\022p\n\017TruncateContent\022-.grpc_services.st"
+      "orage.TruncateContentRequest\032..grpc_serv"
+      "ices.storage.TruncateContentResponse\022d\n\013"
+      "UpdateDrive\022).grpc_services.storage.Upda"
+      "teDriveRequest\032*.grpc_services.storage.U"
+      "pdateDriveResponse\022a\n\nUpdateItem\022(.grpc_"
+      "services.storage.UpdateItemRequest\032).grp"
+      "c_services.storage.UpdateItemResponse\022d\n"
+      "\013RemoveDrive\022).grpc_services.storage.Rem"
+      "oveDriveRequest\032*.grpc_services.storage."
+      "RemoveDriveResponse\022a\n\nRemoveItem\022(.grpc"
+      "_services.storage.RemoveItemRequest\032).gr"
+      "pc_services.storage.RemoveItemResponse\022i"
+      "\n\014WatchChanges\022*.grpc_services.storage.W"
+      "atchChangesRequest\032+.grpc_services.stora"
+      "ge.WatchChangesResponse0\001b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 3770);
+      descriptor, 3833);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "storage/storage.proto", &protobuf_RegisterTypes);
   ::protobuf_storage_2fentities_2eproto::AddDescriptors();
@@ -5562,6 +5565,7 @@ const int CreateItemRequest::kDriveIdFieldNumber;
 const int CreateItemRequest::kNameFieldNumber;
 const int CreateItemRequest::kDescriptionFieldNumber;
 const int CreateItemRequest::kParentIdFieldNumber;
+const int CreateItemRequest::kTypeFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 CreateItemRequest::CreateItemRequest()
@@ -5593,6 +5597,7 @@ CreateItemRequest::CreateItemRequest(const CreateItemRequest& from)
   if (from.parent_id().size() > 0) {
     parent_id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.parent_id_);
   }
+  type_ = from.type_;
   // @@protoc_insertion_point(copy_constructor:grpc_services.storage.CreateItemRequest)
 }
 
@@ -5601,6 +5606,7 @@ void CreateItemRequest::SharedCtor() {
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   description_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   parent_id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  type_ = 0;
   _cached_size_ = 0;
 }
 
@@ -5649,6 +5655,7 @@ void CreateItemRequest::Clear() {
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   description_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   parent_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  type_ = 0;
   _internal_metadata_.Clear();
 }
 
@@ -5726,6 +5733,21 @@ bool CreateItemRequest::MergePartialFromCodedStream(
         break;
       }
 
+      // .grpc_services.storage.ItemType type = 5;
+      case 5: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(40u /* 40 & 0xFF */)) {
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_type(static_cast< ::grpc_services::storage::ItemType >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -5792,6 +5814,12 @@ void CreateItemRequest::SerializeWithCachedSizes(
       4, this->parent_id(), output);
   }
 
+  // .grpc_services.storage.ItemType type = 5;
+  if (this->type() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      5, this->type(), output);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
@@ -5850,6 +5878,12 @@ void CreateItemRequest::SerializeWithCachedSizes(
         4, this->parent_id(), target);
   }
 
+  // .grpc_services.storage.ItemType type = 5;
+  if (this->type() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      5, this->type(), target);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
@@ -5893,6 +5927,12 @@ size_t CreateItemRequest::ByteSizeLong() const {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->parent_id());
+  }
+
+  // .grpc_services.storage.ItemType type = 5;
+  if (this->type() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -5940,6 +5980,9 @@ void CreateItemRequest::MergeFrom(const CreateItemRequest& from) {
 
     parent_id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.parent_id_);
   }
+  if (from.type() != 0) {
+    set_type(from.type());
+  }
 }
 
 void CreateItemRequest::CopyFrom(const ::google::protobuf::Message& from) {
@@ -5970,6 +6013,7 @@ void CreateItemRequest::InternalSwap(CreateItemRequest* other) {
   name_.Swap(&other->name_);
   description_.Swap(&other->description_);
   parent_id_.Swap(&other->parent_id_);
+  swap(type_, other->type_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
@@ -8017,6 +8061,7 @@ void UpdateItemRequest::clear_item() {
   item_ = NULL;
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int UpdateItemRequest::kDriveFieldNumber;
 const int UpdateItemRequest::kItemFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -8033,6 +8078,10 @@ UpdateItemRequest::UpdateItemRequest(const UpdateItemRequest& from)
       _internal_metadata_(NULL),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  drive_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.drive().size() > 0) {
+    drive_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.drive_);
+  }
   if (from.has_item()) {
     item_ = new ::grpc_services::storage::Item(*from.item_);
   } else {
@@ -8042,6 +8091,7 @@ UpdateItemRequest::UpdateItemRequest(const UpdateItemRequest& from)
 }
 
 void UpdateItemRequest::SharedCtor() {
+  drive_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   item_ = NULL;
   _cached_size_ = 0;
 }
@@ -8052,6 +8102,7 @@ UpdateItemRequest::~UpdateItemRequest() {
 }
 
 void UpdateItemRequest::SharedDtor() {
+  drive_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete item_;
 }
 
@@ -8084,6 +8135,7 @@ void UpdateItemRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  drive_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (GetArenaNoVirtual() == NULL && item_ != NULL) {
     delete item_;
   }
@@ -8101,10 +8153,26 @@ bool UpdateItemRequest::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // .grpc_services.storage.Item item = 1;
+      // string drive = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_drive()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->drive().data(), static_cast<int>(this->drive().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "grpc_services.storage.UpdateItemRequest.drive"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .grpc_services.storage.Item item = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_item()));
         } else {
@@ -8139,10 +8207,20 @@ void UpdateItemRequest::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .grpc_services.storage.Item item = 1;
+  // string drive = 1;
+  if (this->drive().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->drive().data(), static_cast<int>(this->drive().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "grpc_services.storage.UpdateItemRequest.drive");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->drive(), output);
+  }
+
+  // .grpc_services.storage.Item item = 2;
   if (this->has_item()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, *this->item_, output);
+      2, *this->item_, output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -8159,11 +8237,22 @@ void UpdateItemRequest::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .grpc_services.storage.Item item = 1;
+  // string drive = 1;
+  if (this->drive().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->drive().data(), static_cast<int>(this->drive().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "grpc_services.storage.UpdateItemRequest.drive");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->drive(), target);
+  }
+
+  // .grpc_services.storage.Item item = 2;
   if (this->has_item()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        1, *this->item_, deterministic, target);
+        2, *this->item_, deterministic, target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -8183,7 +8272,14 @@ size_t UpdateItemRequest::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // .grpc_services.storage.Item item = 1;
+  // string drive = 1;
+  if (this->drive().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->drive());
+  }
+
+  // .grpc_services.storage.Item item = 2;
   if (this->has_item()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSize(
@@ -8219,6 +8315,10 @@ void UpdateItemRequest::MergeFrom(const UpdateItemRequest& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (from.drive().size() > 0) {
+
+    drive_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.drive_);
+  }
   if (from.has_item()) {
     mutable_item()->::grpc_services::storage::Item::MergeFrom(from.item());
   }
@@ -8248,6 +8348,7 @@ void UpdateItemRequest::Swap(UpdateItemRequest* other) {
 }
 void UpdateItemRequest::InternalSwap(UpdateItemRequest* other) {
   using std::swap;
+  drive_.Swap(&other->drive_);
   swap(item_, other->item_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);

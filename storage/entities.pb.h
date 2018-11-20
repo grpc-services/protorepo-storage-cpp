@@ -28,6 +28,7 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 #include "common/Timestamp.pb.h"
 // @@protoc_insertion_point(includes)
@@ -107,6 +108,27 @@ extern ItemRemovedEventDefaultTypeInternal _ItemRemovedEvent_default_instance_;
 namespace grpc_services {
 namespace storage {
 
+enum ItemType {
+  FILE = 0,
+  FOLDER = 1,
+  ItemType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  ItemType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool ItemType_IsValid(int value);
+const ItemType ItemType_MIN = FILE;
+const ItemType ItemType_MAX = FOLDER;
+const int ItemType_ARRAYSIZE = ItemType_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* ItemType_descriptor();
+inline const ::std::string& ItemType_Name(ItemType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    ItemType_descriptor(), value);
+}
+inline bool ItemType_Parse(
+    const ::std::string& name, ItemType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ItemType>(
+    ItemType_descriptor(), name, value);
+}
 // ===================================================================
 
 class Hashes : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:grpc_services.storage.Hashes) */ {
@@ -804,8 +826,8 @@ class Item : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
   static const Item& default_instance();
 
   enum TestTypeCase {
-    kFile = 7,
-    kFolder = 8,
+    kFile = 8,
+    kFolder = 9,
     TEST_TYPE_NOT_SET = 0,
   };
 
@@ -936,19 +958,25 @@ class Item : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
   ::grpc_services::common::Timestamp* mutable_last_modified();
   void set_allocated_last_modified(::grpc_services::common::Timestamp* last_modified);
 
-  // .grpc_services.storage.FileFacet file = 7;
+  // .grpc_services.storage.ItemType type = 7;
+  void clear_type();
+  static const int kTypeFieldNumber = 7;
+  ::grpc_services::storage::ItemType type() const;
+  void set_type(::grpc_services::storage::ItemType value);
+
+  // .grpc_services.storage.FileFacet file = 8;
   bool has_file() const;
   void clear_file();
-  static const int kFileFieldNumber = 7;
+  static const int kFileFieldNumber = 8;
   const ::grpc_services::storage::FileFacet& file() const;
   ::grpc_services::storage::FileFacet* release_file();
   ::grpc_services::storage::FileFacet* mutable_file();
   void set_allocated_file(::grpc_services::storage::FileFacet* file);
 
-  // .grpc_services.storage.FolderFacet folder = 8;
+  // .grpc_services.storage.FolderFacet folder = 9;
   bool has_folder() const;
   void clear_folder();
-  static const int kFolderFieldNumber = 8;
+  static const int kFolderFieldNumber = 9;
   const ::grpc_services::storage::FolderFacet& folder() const;
   ::grpc_services::storage::FolderFacet* release_folder();
   ::grpc_services::storage::FolderFacet* mutable_folder();
@@ -971,6 +999,7 @@ class Item : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
   ::google::protobuf::internal::ArenaStringPtr parent_id_;
   ::grpc_services::common::Timestamp* created_time_;
   ::grpc_services::common::Timestamp* last_modified_;
+  int type_;
   union TestTypeUnion {
     TestTypeUnion() {}
     ::grpc_services::storage::FileFacet* file_;
@@ -2345,7 +2374,21 @@ inline void Item::set_allocated_parent_id(::std::string* parent_id) {
   // @@protoc_insertion_point(field_set_allocated:grpc_services.storage.Item.parent_id)
 }
 
-// .grpc_services.storage.FileFacet file = 7;
+// .grpc_services.storage.ItemType type = 7;
+inline void Item::clear_type() {
+  type_ = 0;
+}
+inline ::grpc_services::storage::ItemType Item::type() const {
+  // @@protoc_insertion_point(field_get:grpc_services.storage.Item.type)
+  return static_cast< ::grpc_services::storage::ItemType >(type_);
+}
+inline void Item::set_type(::grpc_services::storage::ItemType value) {
+  
+  type_ = value;
+  // @@protoc_insertion_point(field_set:grpc_services.storage.Item.type)
+}
+
+// .grpc_services.storage.FileFacet file = 8;
 inline bool Item::has_file() const {
   return test_type_case() == kFile;
 }
@@ -2385,7 +2428,7 @@ inline ::grpc_services::storage::FileFacet* Item::mutable_file() {
   return test_type_.file_;
 }
 
-// .grpc_services.storage.FolderFacet folder = 8;
+// .grpc_services.storage.FolderFacet folder = 9;
 inline bool Item::has_folder() const {
   return test_type_case() == kFolder;
 }
@@ -2620,6 +2663,18 @@ inline void ItemContentUpdatedEvent::set_allocated_item(::grpc_services::storage
 
 }  // namespace storage
 }  // namespace grpc_services
+
+namespace google {
+namespace protobuf {
+
+template <> struct is_proto_enum< ::grpc_services::storage::ItemType> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::grpc_services::storage::ItemType>() {
+  return ::grpc_services::storage::ItemType_descriptor();
+}
+
+}  // namespace protobuf
+}  // namespace google
 
 // @@protoc_insertion_point(global_scope)
 
